@@ -69,7 +69,21 @@ $$\frac{y^T L y}{y^T D y} = \frac{cut(A, \bar{A}) \frac{vol(V)^2}{vol(A)vol(\bar
 
 同时，通过类似的展开可以轻易证明，向量 $y$ 满足约束 $y^T D \mathbf{1} = 0$（即 $y$ 在加权内积下与全 1 向量正交）。
 
-对于松弛后的问题 $\min_{y} \frac{y^T L y}{y^T D y}$，由于分子分母都是二次型，向量 $y$ 的缩放不会改变商的值。因此，我们可以等价地将其写为带约束的最优化问题：$$\min_y y^T L y \quad \text{s.t.} \quad y^T D y = 1 \quad \text{且} \quad y^T D \mathbf{1} = 0$$使用拉格朗日乘子法求解，引入拉格朗日乘子 $\lambda$：$$\mathcal{L}(y, \lambda) = y^T L y - \lambda(y^T D y - 1)$$对向量 $y$ 求偏导并令其等于零：$$\frac{\partial \mathcal{L}}{\partial y} = 2Ly - 2\lambda Dy = 0$$$$L y = \lambda D y$$这就得出了你提到的广义特征值问题！因为我们要最小化目标 $y^T L y$，而 $y^T L y = y^T (\lambda D y) = \lambda (y^T D y) = \lambda$，所以我们要找的实际上是最小的特征值 $\lambda$ 对应的特征向量。
+对于松弛后的问题 $\min_{y} \frac{y^T L y}{y^T D y}$，由于分子分母都是二次型，向量 $y$ 的缩放不会改变商的值。因此，我们可以等价地将其写为带约束的最优化问题：
+
+$$\min_y y^T L y \quad \text{s.t.} \quad y^T D y = 1 \quad \text{且} \quad y^T D \mathbf{1} = 0$$
+
+使用拉格朗日乘子法求解，引入拉格朗日乘子 $\lambda$：
+
+$$\mathcal{L}(y, \lambda) = y^T L y - \lambda(y^T D y - 1)$$
+
+对向量 $y$ 求偏导并令其等于零：
+
+$$\frac{\partial \mathcal{L}}{\partial y} = 2Ly - 2\lambda Dy = 0$$
+
+$$L y = \lambda D y$$
+
+这就得出了你提到的广义特征值问题！因为我们要最小化目标 $y^T L y$，而 $y^T L y = y^T (\lambda D y) = \lambda (y^T D y) = \lambda$，所以我们要找的实际上是最小的特征值 $\lambda$ 对应的特征向量。
 
 #### 等价于 $L_{rw}$ 的特征分解
 由于拉普拉斯矩阵的性质，$L \mathbf{1} = 0$ 且 $D \mathbf{1} = D \mathbf{1}$，所以 $\lambda_0 = 0$ 是最小的特征值，对应的特征向量是全 1 向量 $\mathbf{1}$。
